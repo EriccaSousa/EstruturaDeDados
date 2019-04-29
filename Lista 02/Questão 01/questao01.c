@@ -17,31 +17,31 @@ int main(){
 		
 		switch(opcao){
 			case 1:
-				p = criar();
+				p = iniciaPilha();
 				printf("Pilha inicializada com sucesso!\n");
 				break;
 			case 2:
 				printf("Informe o valor a ser inserido na pilha: ");
 				scanf("%d", &valor);
 				
-				inserir(p, valor);
+				inserePilha(p, valor);
 				break;
 			case 3:
-				valor = remover(p);
+				valor = removePilha(p);
 				break;
 			case 4:
-				imprimir(p);
+				imprimirPilha(p);
 				break;
 			case 5:
-				if(vazia(p) == 1) printf("\nPilha vazia!\n");
+				if(VerificaVazia(p) == 1) printf("\nPilha vazia!\n");
 				else("\nPilha cheia!");
 				break;
 			case 6:
-				if(cheia(p) == 1) printf("\nPilha cheia!\n");
+				if(verificaCheia(p) == 1) printf("\nPilha cheia!\n");
 				else("\nPilha vazia!\n");
 				break;
 			case 7:
-				liberar(p);
+				liberarPilha(p);
 				printf("\nEcerrado com sucesso!\n");
 				break;
 			default:

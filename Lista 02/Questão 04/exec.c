@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <locale.h>
 #include "pilha.h"
 #define N 20
@@ -31,9 +32,9 @@ int main(){
 	inverterPilhas(pilha_01, auxP1);
 	inverterPilhas(pilha_02, auxP2);
 	
-	imprimir(auxP2);
+	gerarNumAleatorio();
 	
-	
+	jogadas(auxP1, auxP2);
 	
 	return 0;
 }
@@ -58,6 +59,31 @@ void inverterPilhas(Pilha *p, Pilha *aux){
 		aux = remover(p);
 		inserir(p, aux);
 	}
+}
+
+void jogadas(Pilha *p1, Pilha *p2){
+	printf("\nChegou aqui!\n");
+	while((!vazia(p1)) || (!vazia(p2))){
+		
+		int aux1 = (remover(p1));
+		int aux2 = (remover(p2));
+		
+		if(aux1 == gerarNumAleatorio()){
+			printf("\nJogador 01 ganhou!\n");
+			break;
+		}else if (aux2 == gerarNumAleatorio()){
+			printf("\nJogador 02 ganhou!\n");
+			break;
+		}
+	}
+}
+
+int gerarNumAleatorio(){
+	srand(time(NULL));
+	int numGerado = 1 + rand() % 10;
+	printf("\nO número gerado foi %d ", numGerado);
+	
+	return numGerado;
 }
 
 Pilha* criar(){
@@ -101,4 +127,5 @@ void imprimir(Pilha *p){
 void liberar(Pilha *p){
   free(p);
 }
+
 
