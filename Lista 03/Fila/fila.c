@@ -8,6 +8,7 @@ struct fila{
    int v[N];
     int ini;
     int fim;
+    int qtd_Elementos;
 };
 
 Fila* criar(){
