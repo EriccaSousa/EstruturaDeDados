@@ -12,7 +12,6 @@ f) Peso (float)
 Declare um novo tipo C chamado Paciente que deve ser exatamente a estrutura acima.  
 */
 #include <stdio.h>
-#include <malloc.h>
 #include <locale.h>
 
 typedef struct {

@@ -4,7 +4,7 @@
 void bubbleSort(int *v, int n){
     int i, j, temp;
     for(i = n - 1; i > 0; i--){
-        for(j = 0;j < i; j++){
+        for(j = 0; j < i; j++){
             if(v[j] > v[j+1]){
                 temp = v[j];
                 v[j] = v[j+1];

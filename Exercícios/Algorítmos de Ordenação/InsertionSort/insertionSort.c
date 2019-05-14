@@ -5,7 +5,7 @@ void insertionSort(int *vet, int n){
 	
 	for(i = 1; i < n; i++){
 		aux = vet[i];
-		for(j = i -1; j >= 0; j--){
+		for(j = i-1; j >= 0; j--){
 			if(vet[j] > aux){
 				vet[j + 1] = vet[j];
 			}else{
