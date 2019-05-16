@@ -7,16 +7,16 @@ Receber um parâmetro char s[] e faça comparações com \0 para percorer o vetor de
 
 #include <stdio.h>
 #include <locale.h>
-#include <ctype.h>
-#include <stdlib.h>
+#include <string.h>
 #include "Pilha.h"
+
 
 int main(){
 	setlocale(LC_ALL, "Portuguese");
 	
 	int i = 0, tam = 0, cont = 0;
-	char aux;
-	char vet[tam];
+	char letra;
+	char palavra[100];
 	
 	Pilha *pilha;
 	Pilha *pilha_aux1;
@@ -26,32 +26,33 @@ int main(){
 	pilha_aux1 = criar();
 	pilha_aux2 = criar();
 	
-	printf("\nQual o tamanho da palavra?\n- ");
-	scanf("%d", &tam);
+	printf("Informe a palavra: ");
+	scanf(" %s", &palavra);
 	
-	//Lendo valores para 'pilha' e 'pilha_aux1";
-	printf("Informe a palavra:\n");
-	for(i = 0; i < tam; i++){
-		scanf(" %s", &vet[i]);
+	tam = strlen(palavra);
+	
+	printf("\nPalavra informada: ");
+	while(i < tam){
+		palavra[i] = toupper(palavra[i]);
 		
-		vet[i] = toupper(vet[i]);//Convertendo todos os caracteres lidos para letras maiúsculas;
+		printf("%c", palavra[i]);
 		
-		inserir(pilha, vet[i]);
-		inserir(pilha_aux1, vet[i]);
+		inserir(pilha, palavra[i]);
+		inserir(pilha_aux1, palavra[i]);
+		
+		i++;
 	}
 	
-	//Invertendo 'pilha';
 	for(i = 0; i < tam; i++){
-		aux = remover(pilha);
-		inserir(pilha_aux2, aux);
+		inserir(pilha_aux2, remover(pilha_aux1));
 	}
 	
-	//Comparando valores de 'pilha_aux1' e 'pilha_aux2";
 	for(i = 0; i < tam; i++){
-		if(remover(pilha_aux1) == remover(pilha_aux2)){
+		if(remover(pilha) == remover(pilha_aux2)){
 			cont++;
 		}
 	}
+	
 	
 	if(cont == tam){
 		printf("\nA palavra informada é um palídromo!\n");
@@ -59,6 +60,8 @@ int main(){
 		printf("\nA palavra informada não é um palíndromo!\n");
 	}
 	
-	system("Pause");
+	
+	printf("\n");
+	
 	return 0;
 }
